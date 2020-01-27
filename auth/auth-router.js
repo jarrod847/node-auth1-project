@@ -33,4 +33,15 @@ router.post('/login', (req, res) => {
     });
 });
 
+router.get('/users', (req, res) => {
+  Users.find()
+  .then(users => {
+    res.json(users)
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({ message: "failed to get users"})
+})
+})
+
 module.exports = router;
